@@ -18,5 +18,12 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^16.0.5"
+  },
+  "dependencies": {
+    "excel4node": "^1.7.2",
+    "jquery": "^3.6.0",
+    "mssql": "^7.3.0",
+    "mysql": "github:mysqljs/mysql",
+    "remote": "^0.2.6"
   }
 }

@@ -1,19 +1,86 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+<head>
+<script>window.$ = window.jQuery = require('jquery');</script>
+<title>รับจ้างบอร์ดกระดานคะแนน</title>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<style>
+  div
+  {
+    display: inline-block;
+  }
+</style>
+
+</head>
+<body>
+<h1>ส่วนแสดงผล</h1>
+<img src="5df65937fd9db26a9a6bed05.jpeg" width="400" height="200">
+
+<br>
+
+<br>
+
+
+ชื่อทีม:  <div  id="resultDiv"></div>
+<br>
+เวลา:  <div id="time"></div>
+
+
+
+<br>
+<br>
+
+<br>
+<br>
+
+
+ชื่อทีม:  <div id="resultDivb"></div>
+<br>
+เวลา:  <div id="timeb"></div>
+
+<script>
+
+const mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host: "localhost",
+    user: "root",
+    password: "",
+    database: "datatest"
+});
+
+
+
+$sql = "SELECT * FROM scoreboard";
+
+
+connection.connect();
+function foo() {
+
+// your function code here
+
+
+
+connection.query($sql, function (error, results, fields) {
+  if (error) throw error;
+  console.log(results);
+
+  $('#resultDiv').text(results[0].name);
+  $('#time').text(results[0].time);
+  $('#customersname').text(results[0].bonusZone);
+
+
+  $('#resultDivb').text(results[1].name);
+  $('#timeb').text(results[1].time);
+  $('#customersnameb').text(results[1].bonusZone);
+});
+ 
+setTimeout(foo, 1000);
+}
+
+foo();
+
+
+
+
+</script>
+</body>
 </html>

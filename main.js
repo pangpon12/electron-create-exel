@@ -8,13 +8,23 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
+      enableremotemodule: true,
+      nodeIntegration: true,
+      contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
+  const interval = setInterval(function() {
+    // method to be executed;
+  }, 5000);
+ 
+ clearInterval(interval);
 
+
+ 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
