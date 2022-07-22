@@ -20,7 +20,7 @@
     "electron": "^16.0.5"
   },
   "dependencies": {
-    "excel4node": "^1.7.2",
+    "excel4node": "^1.8.0",
     "jquery": "^3.6.0",
     "mssql": "^7.3.0",
     "mysql": "github:mysqljs/mysql",
